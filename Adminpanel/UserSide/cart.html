@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart - Samangri Nepal</title>
+    <link rel="stylesheet" href="CSS/cart.css">
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        <img src="Images/SamangriNepal.png" alt="Samangri Nepal Logo">
+    </div>
+</header>
+
+<main>
+    <h1>Shopping Cart</h1>
+    <section class="cart-items">
+        
+        <?php
+        $conn = new mysqli("localhost", "root", "", "cart_db");
+
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
+
+        $sql = "SELECT id, name, price, image, quantity FROM cart";
+        $result = $conn->query($sql);
+
+        if ($result->num_rows > 0) {
+            while($row = $result->fetch_assoc()) {
+                echo '<div class="cart-item">';
+                echo '<img src="../php admin crud/uploaded_img/' . $row["image"] . '" alt="' . $row["name"] . '">';
+                echo '<p>' . $row["name"] . '<br>Rs: ' . $row["price"] . '</p>';
+                echo '<input type="number" value="' . $row["quantity"] . '" min="1">';
+                echo '<button class="remove-btn">Remove</button>';
+                echo '</div>';
+            }
+        } else {
+            echo '<p>Your cart is currently empty.</p>';
+        }
+
+        $conn->close();
+        ?>
+
+        <div class="cart-total">
+            <p>Total: Rs <span id="total-price">0</span></p>
+            <button class="checkout-btn">Proceed to Checkout</button>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="footer-links">
+        <a href="AboutUS.html">About Samangri Nepal</a>
+        <a href="PrivacyPolicy.html">Privacy Policy</a>
+        <a href="ContactUS.html">Contact</a>
+    </div>
+</footer>
+
+<script src="JS/cart.js"></script>
+</body>
+</html>

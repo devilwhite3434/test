@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signupsss</title>
+    <link rel="stylesheet" href="./css/signup.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="form-container">
+        <h1>Signup</h1>
+        <form action="signup.php" method="post" class="signup-form">
+            <div>
+                <label for="name">Name</label>
+                <input type="text"name="firstName">
+            </div>
+            <div>
+                <label for="email">Email</label>
+                <input type="email"  name="email">
+            </div>
+            <div>
+                <label for="password">Password</label>
+                <input type="password"  name="password" >
+            </div>
+            <div>
+                <label for="confirmation">Confirm Password</label>
+                <input type="password" id="confirmation" name="confirmation" >
+            </div>
+            <button type="submit">Sign Up</button>
+        </form>
+        <p class="create-account">
+            Already have an account? <a href="Login.html">Login</a>
+        </p>
+    </div>
+</body>
+</html>
